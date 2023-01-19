@@ -12,8 +12,12 @@ function NicknameForm({ handleSubmitNickname }) {
     setNickname("");
   }, [handleSubmitNickname, nickname]);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className="d-flex">
+    <form className="d-flex" onSubmit={onSubmit}>
       <div className="card d-flex flex-row align-items-center">
         <label htmlFor="user-name-input" style={{ width: 60 }}>
           닉네임
@@ -25,6 +29,12 @@ function NicknameForm({ handleSubmitNickname }) {
           maxLength={12}
           value={nickname}
           onChange={handleChangeNickname}
+          onKeyPress={(event) => {
+            if (event.code === "Enter") {
+              event.preventDefault();
+              handleSubmit();
+            }
+          }}
         />
         <button
           type="button"

@@ -21,7 +21,7 @@ function ChatRoom({ nickname }) {
   // RECEIVE_MESSAGE 이벤트 콜백: messages state에 데이터를 추가합니다.
   const handleReceiveMessage = useCallback(
     (pongData) => {
-      const newMessage = makeMessage(pongData); // makeMessage는 아직 구현하지 않은 함수.
+      const newMessage = makeMessage(pongData);
       setMessages((messages) => [...messages, newMessage]);
       moveScrollToReceiveMessage();
     },
